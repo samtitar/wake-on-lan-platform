@@ -1,0 +1,92 @@
+body {
+    background: white;
+    margin: 0px;
+    color: white;
+}
+
+h1 {
+    font-family: 'Roboto';
+    font-size: 4em;
+    text-align: center;
+}
+
+.header {
+    position: fixed;
+    left: -50%;
+    height: 0;
+    width: 200%;
+    background: linear-gradient(90deg, rgba(233,73,65,1) 0%, rgba(239,116,31,1) 100%);
+    border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+    box-sizing: border-box;
+}
+
+.system-cards-container {
+    position: absolute;
+    top: 20%;
+    width: 100%;
+    padding: 2em;
+    box-sizing: border-box;
+}
+
+.system-card {
+    width: 100%;
+    background: linear-gradient(90deg, rgba(233,73,65,1) 0%, rgba(239,116,31,1) 100%);
+    border-radius: 2.5em;
+    padding: 4em;
+    box-sizing: border-box;
+    margin-top: 2em;
+}
+
+.system-card-title {
+    color: white;
+    font-size: 3em;
+    margin: 0;
+    font-family: 'Roboto';
+    text-transform: uppercase;
+}
+
+.system-card-title span {
+    font-weight: normal;
+    color: white;
+    font-size: .7em;
+    text-transform: none;
+}
+
+.system-card-actions {
+    margin-top: 4em;
+    width: 100%;
+}
+
+.system-card-actions > * {
+    margin-right: .5em;
+}
+
+.system-card-action {
+    border: 1px solid white;
+    border-radius: .8em;
+    color: white;
+    padding: 1em;
+    width: auto;
+    background-color: transparent;
+    font-size: 1.5em;
+    font-family: 'Open Sans';
+}
+
+.fade-in-up {
+    opacity: 0;
+    animation-name: fadeInUp;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+}
+
+@keyframes fadeInUp {
+    from {
+        transform: translate3d(0,40px,0)
+    }
+
+    to {
+        transform: translate3d(0,0,0);
+        opacity: 1
+    }
+}
