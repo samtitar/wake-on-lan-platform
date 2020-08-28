@@ -1,12 +1,9 @@
 $(function() {
     clearCards();
-    $(".header").stop(true, true).delay(100).animate({ height: '20%', padding: '5em' }, 500, function() {
-        var systems = [
-            { 'name': 'System 1', 'status': 'inactive' },
-            { 'name': 'System 2', 'status': 'active' },
-        ];
-    
-        renderSystemCards(systems);
+    $.get('/get_systems', function(systems) {
+        $(".header").stop(true, true).delay(100).animate({ height: '20%', padding: '5em' }, 500, function() {        
+            renderSystemCards(systems);
+        });
     });
 });
 
@@ -28,8 +25,7 @@ function renderSystemCards(systems) {
         var title_html = sys_name + ' ' + status_html;
 
         var boot_btn = '<button class="system-card-action" onclick="bootSystem(\'' + sys_id + '\')">Boot</button>';
-        var shut_btn = '<button class="system-card-action" onclick="shutSystem(\'' + sys_id + '\')">Shutdown</button>';
-        var stem_btn = '<button class="system-card-action" onclick="stemSystem(\'' + sys_id + '\')">Steam Login</button>';
+        // var shut_btn = '<button class="system-card-action" onclick="shutSystem(\'' + sys_id + '\')">Shutdown</button>';
 
         // Construct elements
         var card = $('<div class="system-card fade-in-up"></div>');
@@ -38,8 +34,7 @@ function renderSystemCards(systems) {
 
         // Append elements & render
         card_btns.append(boot_btn);
-        card_btns.append(shut_btn);
-        card_btns.append(stem_btn);
+        // card_btns.append(shut_btn);
 
         card.append(card_title);
         card.append(card_btns);
@@ -49,14 +44,14 @@ function renderSystemCards(systems) {
 }
 
 // UI Controlled functions
-function bootSystem(system) {
-    alert('Booting ' + system);
+function bootSystem(system_id) {
+    $.get('/boot_system?system_id=' + system_id, function() {
+        alert('Booting ' + system_id);
+    });
 }
 
-function shutSystem(system) {
-    alert('Shutting down ' + system);
-}
-
-function stemSystem(system) {
-    alert('Logging in for ' + system);
+function shutSystem(system_id) {
+    $.get('/boot_system?system_id=' + system_id, function() {
+        alert('Booting ' + system_id);
+    });
 }

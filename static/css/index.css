@@ -11,6 +11,10 @@ h1 {
     margin: 1em 0;
 }
 
+#message {
+    font-size: 3em;
+}
+
 .center-page {
     position: absolute;
     top: 10%;
